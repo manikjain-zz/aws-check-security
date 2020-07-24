@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "async": "^3.2.0",
+    "aws-sdk": "^2.718.0",
+    "prettytable": "^0.3.1"
+  },
+  "name": "aws-check-security",
+  "description": "A Node.js script that uses the AWS SDK to find instances with inbound rules allowing '0.0.0.0/0' IP ranges.",
+  "version": "1.0.1",
+  "main": "check-security.js",
+  "devDependencies": {
+    "mocha": "^8.0.1"
+  },
+  "scripts": {
+    "test": "mocha --timeout 5000"
+  },
+  "author": "Manik Jain",
+  "license": "ISC"
+}
