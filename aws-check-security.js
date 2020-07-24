@@ -11,7 +11,15 @@ var ec2 = new AWS.EC2({
 var pt = new PrettyTable();
 pt.fieldNames(["INSTANCE_ID", "INBOUND", "INSECURE"]);
 
-// checkSecurity function definition
+/* checkSecurity function definition
+- This function first gets a list of all EC2 instance data from AWS
+- Records security groups associated with all instances
+- Loops over all the instance data:
+    - To check the security groups for non-empty inbound ip ranges.
+    - Record all port and IP range combinations.
+    - Check for the presence of '0.0.0.0/0' inside the IP ranges 
+    and mark the instance as insecure if the IP range is found.
+*/
 async function checkSecurity() {
 
     console.log();
@@ -23,12 +31,7 @@ async function checkSecurity() {
         return { instance_id: item.Instances[0].InstanceId, security_group_ids: item.Instances[0].SecurityGroups.map(item => item.GroupId) }
     }));
 
-    /* 
-    Loop over all the instance data:
-    - To check the security groups for inbound ip ranges.
-    - Record all port and IP range combinations.
-    - Check for the presence of '0.0.0.0/0' inside the IP ranges and mark the instance as insecure accordingly.
-    */
+    // Loop over instance data
     for (const instance of instanceData) {
 
         // Get details about the security groups for an instance
