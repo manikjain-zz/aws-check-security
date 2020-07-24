@@ -7,9 +7,9 @@ Table of Contents
 =================
 * [Prerequisites](#prerequisites)
 * [Install and run the script](#install-and-run-the-script)
-  * [Sample run of the script](sample-run-of-the-script)
-* [Unit tests](unit-tests)
-  * [Sample run of unit tests](sample-run-of-unit-tests)
+  * [Sample run of the script](#sample-run-of-the-script)
+* [Unit tests](#unit-tests)
+  * [Sample run of unit tests](#sample-run-of-unit-tests)
 
 ## Prerequisites:
 1. Node.js (> v12.0.0) must be installed on your machine. Download from [https://nodejs.org/en/download/](https://nodejs.org/en/download/), if not already installed.
