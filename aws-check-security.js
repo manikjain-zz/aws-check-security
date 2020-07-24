@@ -29,14 +29,15 @@ async function checkSecurity() {
         Filters: [{ Name: 'instance-state-name', Values: ['running'] }]
     }).promise().then(data => data.Reservations.map((item) => {
         return { instance_id: item.Instances[0].InstanceId, security_group_ids: item.Instances[0].SecurityGroups.map(item => item.GroupId) }
-    }));
+    })).catch(err => console.log(err));
 
     // Loop over instance data
     for (const instance of instanceData) {
 
         // Get details about the security groups for an instance
         const secGrp = await ec2.describeSecurityGroups({ GroupIds: instance.security_group_ids }).promise()
-            .then(data => data.SecurityGroups);
+            .then(data => data.SecurityGroups)
+            .catch(err => console.log(err));
 
         // Map the IpPermissions (Inbound) rules
         let secGrpIngressPerms = secGrp.map(item => item.IpPermissions);

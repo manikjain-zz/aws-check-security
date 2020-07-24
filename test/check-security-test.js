@@ -8,7 +8,7 @@ describe('#Get instance data from AWS', () => {
     it('should return instance data', () => {
         return describeInstances.then(data => {
             assert.notEqual(data, null);
-        });
+        }).catch(err => console.log(err));
     });
 });
 
@@ -17,6 +17,6 @@ describe('#Get security groups from AWS', () => {
     it('should return security group data', () => {
         return describeSecurityGroups.then(data => {
             assert.notEqual(data, null);
-        });
+        }).catch(err => console.log(err));
     });
 });
